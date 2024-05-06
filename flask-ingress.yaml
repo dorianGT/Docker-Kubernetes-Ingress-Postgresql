@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flask-ingress
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /  # Route de base, redirige vers le service existant
+        pathType: Prefix
+        backend:
+          service:
+            name: my-flask-service
+            port:
+              number: 8080
+      - path: /second  # Nouvelle route redirigeant vers le second service
+        pathType: Prefix
+        backend:
+          service:
+            name: my-second-service
+            port:
+              number: 8081
+      - path: /database  # Nouvelle route redirigeant vers le service PostgreSQL
+        pathType: Prefix
+        backend:
+          service:
+            name: postgresql
+            port:
+              number: 5432

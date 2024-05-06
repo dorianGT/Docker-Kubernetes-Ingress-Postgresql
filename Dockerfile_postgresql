@@ -1,0 +1,10 @@
+# Utiliser une image de base PostgreSQL
+FROM postgres:latest
+
+# Exposer le port PostgreSQL par défaut (5432)
+EXPOSE 5432
+
+# Définir les variables d'environnement pour la base de données (optionnel)
+ENV POSTGRES_DB=mydatabase
+ENV POSTGRES_USER=myuser
+ENV POSTGRES_PASSWORD=mypassword
