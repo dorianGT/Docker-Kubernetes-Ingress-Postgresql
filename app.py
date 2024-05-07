@@ -5,10 +5,13 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+
+# Configuration de la base de données
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword@postgresql:5432/mydatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+# Initialisation de l'extension SQLAlchemy
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -21,6 +24,7 @@ class UserForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Add User')
 
+# Route pour ajouter un utilisateur
 @app.route("/add_user", methods=['GET', 'POST'])
 def add_user():
     form = UserForm()
