@@ -26,6 +26,7 @@ Ce guide décrit le processus de construction, de déploiement et de test d'une 
 
 ## Étape 1 : Activation de l'environnement virtuel
 
+```bash
 venv\Scripts\activate.bat
 
 Cette commande active votre environnement virtuel Python. Cela vous permet de travailler avec des dépendances spécifiques sans interférer avec votre configuration Python globale.
