@@ -105,7 +105,44 @@ kubectl get ingress
 
 Ces commandes permettent de vérifier l'état de votre cluster Kubernetes. Vous pouvez voir si les déploiements, les pods, les services, et l'ingress fonctionnent correctement.
 
-## Étape 9 : Ouverture d'un tunnel Minikube
+## Étape 9 : Création d'une table dans la base de données PostgreSQL
+
+Après avoir déployé votre application avec Kubernetes, vous pouvez avoir besoin de créer des tables dans votre base de données PostgreSQL. Voici comment procéder :
+
+```bash
+kubectl exec -it postgresql-79dcd64f94-smb92
+```
+
+Se connecter à PostgreSQL avec psql :
+
+```bash
+psql -U myuser mydatabase
+```
+
+Créer une table "user" :
+
+```bash
+CREATE TABLE "user" (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(80) UNIQUE NOT NULL,
+    password VARCHAR(80) NOT NULL
+);
+```
+
+Vérifier la table créée :
+
+```bash
+\d "user"
+```
+
+Quitter PostgreSQL et le shell :
+
+```bash
+\q
+exit
+```
+
+## Étape 10 : Ouverture d'un tunnel Minikube
 
 ```bash
 minikube tunnel
