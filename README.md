@@ -34,63 +34,81 @@ Cette commande active votre environnement virtuel Python. Cela vous permet de tr
 
 ## Étape 2 : Connexion à Docker
 
+```bash
 docker login
+```
 
 Ici, vous vous connectez à Docker Hub. Cela vous permet de pousser vos images Docker sur le cloud, ce qui est nécessaire pour le déploiement dans un environnement Kubernetes.
 
 ## Étape 3 : Démarrage de Minikube
 
+```bash
 minikube start
+```
 
 Cette commande démarre Minikube, qui est une solution permettant de faire tourner des clusters Kubernetes en local. C'est utile pour tester et développer des applications Kubernetes sans avoir besoin d'une infrastructure complète.
 
 ## Étape 4 : Construction des images Docker
 
+```bash
 docker build -t my_flask_app:latest -f Dockerfile_flask .
 docker build -t my_second_service:latest -f Dockerfile_second_service .
 docker build -t postgresql -f Dockerfile_postgresql .
+```
 
 Ces commandes créent des images Docker à partir de fichiers Dockerfile spécifiques. Chacune de ces images représente un service ou une partie de votre application.
 
+```bash
 my_flask_app: une application Flask.
 my_second_service: un autre service.
 postgresql: une base de données PostgreSQL.
+```
 
 ## Étape 5 : Taguer les images Docker
 
+```bash
 docker tag my_flask_app doriang12/my_flask_app:latest
 docker tag my_second_service doriang12/my_second_service:latest
 docker tag postgresql doriang12/postgresql:latest
+```
 
 Le taggage permet de donner des noms significatifs à vos images Docker. Ici, vous ajoutez des tags avec votre nom d'utilisateur Docker Hub pour pouvoir les pousser vers votre compte.
 
 ## Étape 6 : Pousser les images sur Docker Hub
 
+```bash
 docker push doriang12/my_flask_app:latest
 docker push doriang12/my_second_service:latest
 docker push doriang12/postgresql:latest
+```
 
 Ces commandes envoient vos images Docker sur Docker Hub. Cela rend vos images disponibles pour un déploiement ultérieur sur Kubernetes.
 
 ## Étape 7 : Application des configurations Kubernetes
 
+```bash
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 kubectl apply -f flask-ingress.yaml
+```
 
 Ces commandes utilisent kubectl pour appliquer les fichiers de configuration Kubernetes. Les fichiers deployment.yaml, service.yaml, et flask-ingress.yaml définissent respectivement le déploiement de vos applications, les services exposés par Kubernetes, et la configuration de l'ingress (qui gère le trafic externe vers vos services).
 
 ## Étape 8 : Vérification de l'état des déploiements
 
+```bash
 kubectl get deployments
 kubectl get pods
 kubectl get services
 kubectl get ingress
+```
 
 Ces commandes permettent de vérifier l'état de votre cluster Kubernetes. Vous pouvez voir si les déploiements, les pods, les services, et l'ingress fonctionnent correctement.
 
 ## Étape 9 : Ouverture d'un tunnel Minikube
 
+```bash
 minikube tunnel
+```
 
 La commande minikube tunnel permet de créer un tunnel réseau qui connecte votre environnement local avec les services exécutés dans Minikube. Cela vous permet de tester votre application localement comme si elle était déployée sur un cluster Kubernetes externe.
