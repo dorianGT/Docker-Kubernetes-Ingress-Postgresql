@@ -152,4 +152,4 @@ La commande minikube tunnel permet de créer un tunnel réseau qui connecte votr
 
 ## Étape 11 : Accés aux services
 
-Vous pouvez accéder aux différents services en ligne avec localhost, localhost/add_user , localhost/second et localhost/second/show_user
+Vous pouvez accéder aux différents services en ligne avec localhost, localhost/add_user , localhost/second et localhost/second/show_user.
