@@ -150,6 +150,6 @@ minikube tunnel
 
 La commande minikube tunnel permet de créer un tunnel réseau qui connecte votre environnement local avec les services exécutés dans Minikube. Cela vous permet de tester votre application localement comme si elle était déployée sur un cluster Kubernetes externe.
 
-## Étape 11 :
+## Étape 11 : Accés aux sites
 
 Vous pouvez accéder aux différents services en ligne avec localhost, localhost/add_user , localhost/second et localhost/second/show_user
